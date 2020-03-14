@@ -7,7 +7,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class ProductComponent implements OnInit {
   public products: Array<Product>;
-
+  public imgUrl = "https://via.placeholder.com/320x150/FF0000";
   constructor() {}
 
   ngOnInit(): void {
