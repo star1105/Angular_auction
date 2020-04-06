@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-
+import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { FooterComponent } from "./footer/footer.component";
@@ -9,7 +9,14 @@ import { SearchComponent } from "./search/search.component";
 import { CarouselComponent } from "./carousel/carousel.component";
 import { ProductComponent } from "./product/product.component";
 import { StarsComponent } from "./stars/stars.component";
+import { ProductDetailComponent } from "./product-detail/product-detail.component";
+import { HomeComponent } from "./home/home.component";
+import { Routes, RouterModule } from "@angular/router";
 
+const routeConfig: Routes = [
+  { path: "", component: HomeComponent },
+  { path: "product/:prodTitle", component: ProductDetailComponent }
+];
 @NgModule({
   // ! 组件，指令，管道
   declarations: [
@@ -19,10 +26,17 @@ import { StarsComponent } from "./stars/stars.component";
     SearchComponent,
     CarouselComponent,
     ProductComponent,
-    StarsComponent
+    StarsComponent,
+    ProductDetailComponent,
+    HomeComponent
   ],
   //! 引入的angular模块
-  imports: [BrowserModule, FormsModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot(routeConfig)
+  ],
   // ! 服务
   providers: [],
   //! 主组件
