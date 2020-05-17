@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ProductService } from "../shared/product.service";
+import { FormControl } from "@angular/forms";
+import { debounceTime } from "rxjs/operators";
 
 @Component({
   selector: "app-product",
@@ -8,8 +10,17 @@ import { ProductService } from "../shared/product.service";
 })
 export class ProductComponent implements OnInit {
   public products: Array<Product>;
+
+  public keyworld: string;
+
+  public titleFilter: FormControl = new FormControl();
+
   public imgUrl = "https://via.placeholder.com/320x150/FF0000";
-  constructor(public productService: ProductService) {}
+  constructor(public productService: ProductService) {
+    this.titleFilter.valueChanges
+      .pipe(debounceTime(500))
+      .subscribe((value) => (this.keyworld = value));
+  }
 
   ngOnInit(): void {
     this.products = this.productService.getProducts();

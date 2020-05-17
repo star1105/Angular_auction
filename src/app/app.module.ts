@@ -1,6 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./navbar/navbar.component";
@@ -13,6 +13,7 @@ import { ProductDetailComponent } from "./product-detail/product-detail.componen
 import { HomeComponent } from "./home/home.component";
 import { Routes, RouterModule } from "@angular/router";
 import { ProductService } from "./shared/product.service";
+import { FilterPipe } from './pipe/filter.pipe';
 
 const routeConfig: Routes = [
   { path: "", component: HomeComponent },
@@ -30,6 +31,7 @@ const routeConfig: Routes = [
     StarsComponent,
     ProductDetailComponent,
     HomeComponent,
+    FilterPipe,
   ],
   //! 引入的angular模块
   imports: [
@@ -37,6 +39,7 @@ const routeConfig: Routes = [
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(routeConfig),
+    ReactiveFormsModule, // 响应式编程模块
   ],
   // ! 服务
   providers: [ProductService],
