@@ -9,11 +9,8 @@ export class ProductService {
       "电子产品",
       "硬件设备",
     ]),
-    new Product(2, "华为p30", 6799, 3.5, "这是第二个商品的商品描述", [
-      "电子产品",
-    ]),
+    new Product(2, "华为p30", 6799, 3.5, "这是第二个商品的商品描述", ["图书"]),
     new Product(3, "华为mate 30", 6799, 4.5, "这是第三个商品的商品描述", [
-      "电子产品",
       "硬件设备",
     ]),
     new Product(4, "华为mate 30 pro", 6799, 5, "这是第四个商品的商品描述", [
@@ -36,6 +33,11 @@ export class ProductService {
     new Comment(6, 2, "2017-02-02 22:22:22", "star6", 3, "东西不错"),
   ];
   constructor() {}
+
+  getAllCategories(): string[] {
+    return ["电子产品", "硬件设备", "图书"];
+  }
+
   getProducts(): Product[] {
     return this.products;
   }
